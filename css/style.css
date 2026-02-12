@@ -15,6 +15,12 @@ header h1 {
     margin-top: 0px;
 }
 
+section.canvasdock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 footer {
     background-color: #4c4c5c;
     color: #bcbccc;
