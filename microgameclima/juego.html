@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Saver - WarioWare Style</title>
+    <link rel="stylesheet" href="estilojuego.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <div id="ui-layer">
+            <h1 id="prompt" class="flash">¡APÁGALO!</h1>
+            <div id="stats">
+                <div id="level-display">NIVEL: <span id="level-val">1</span></div>
+                <div id="score-display">PUNTOS: <span id="score-val">0</span></div>
+            </div>
+            <div id="timer-bar-container">
+                <div id="timer-bar"></div>
+            </div>
+            <div id="counter">MÁQUINAS: <span id="off-count">0</span> / <span id="goal-val">2</span></div>
+        </div>
+
+        <div id="machines-grid">
+            <div class="machine on" id="m1" onclick="toggleMachine('m1')">
+                <div class="status-light"></div>
+                <div class="icon">⚡</div>
+            </div>
+            <div class="machine on" id="m2" onclick="toggleMachine('m2')">
+                <div class="status-light"></div>
+                <div class="icon">⚡</div>
+            </div>
+            <div class="machine on" id="m3" onclick="toggleMachine('m3')">
+                <div class="status-light"></div>
+                <div class="icon">⚡</div>
+            </div>
+            <div class="machine on" id="m4" onclick="toggleMachine('m4')">
+                <div class="status-light"></div>
+                <div class="icon">⚡</div>
+            </div>
+        </div>
+
+        <div id="overlay" class="hidden">
+            <h2 id="result-text"></h2>
+            <button onclick="startGame()">REINTENTAR</button>
+        </div>
+    </div>
+    <script src="juegoscript.js"></script>
+</body>
+
+</html>
