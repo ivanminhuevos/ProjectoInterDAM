@@ -1,11 +1,13 @@
-mgRegistry = {}
-
+var mgRegistry = {}
+var mgSeqRegistry = []
 class Microgame {
-    constructor(name) {
+    constructor(name, desc) {
         this.name = name;
+        this.desc = desc;
         this.dificultad = 0;
 
         mgRegistry[name] = this;
+        mgSeqRegistry.push(name);
     }
 
     getDificultad() {
@@ -21,13 +23,17 @@ class Microgame {
     think() {}
 
     draw() {}
+
+    win() {
+        PIDAM_OnMinigameWin();
+    }
 }
 
 function Microgames_GetByName(name) {
     return mgRegistry[name]
 }
 
-activeMG;
+var activeMG;
 function Microgames_SetActive(name) {
     mg = Microgames_GetByName(name);
 
@@ -66,4 +72,9 @@ function Microgames_DrawActive() {
     }
 
     activeMG.draw();
+}
+
+function Microgames_GetRandom() {
+    var randIdx = Math.floor(Math.random() * mgSeqRegistry.length);
+    return mgSeqRegistry[randIdx];
 }

@@ -1,0 +1,4 @@
+arbol.png -> [Arbre.svg, Tempopseudo, CC0](https://commons.wikimedia.org/wiki/File:Arbre.svg)
+fondo.png -> [Valley of Tasman River NZ 12.jpg, Krzysztof Golik, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Valley_of_Tasman_River_NZ_12.jpg)
+manzana.png -> [Apple fruit icon.svg, Satheeshsankaran, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Apple_fruit_icon.svg)
+mano.png, mano_cerrada.png -> [Mobile black bare transparent 45 left 160X160.png,  Souren, modified by Purodha Blissenbach, CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Mobile_black_bare_transparent_45_left_160X160.png)
