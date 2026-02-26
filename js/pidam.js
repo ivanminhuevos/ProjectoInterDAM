@@ -2,6 +2,9 @@ console.log("Hola!");
 
 var onMinigame = false;
 var onMinigameStart = Date.now();
+var score = 0;
+var globalDifficulty = 0;
+
 function PIDAM_InterludeDraw() {
     var currMG = Microgames_GetActive();
 
@@ -20,8 +23,10 @@ function PIDAM_InterludeThink() {
 
     // After 2 seconds, pick a new random microgame
     if (timeSince > 2) {
-        var nextMG = Microgames_GetRandom();
-        Microgames_SetActive(nextMG);
+        var nextMGName = Microgames_GetRandom();
+        var nextMG = Microgames_GetByName(nextMGName);
+        if (nextMG) nextMG.setDificultad(globalDifficulty);
+        Microgames_SetActive(nextMGName);
         onMinigame = true;
     }
 }
@@ -34,6 +39,11 @@ function PIDAM_BeginInterlude() {
 
 function PIDAM_OnMinigameWin() {
     console.log("Minijuego ganado!");
+    score++;
+    if (score % 10 === 0) {
+        globalDifficulty++;
+        console.log("¡Dificultad aumentada! Nivel: " + globalDifficulty);
+    }
 
     PIDAM_BeginInterlude();
 }

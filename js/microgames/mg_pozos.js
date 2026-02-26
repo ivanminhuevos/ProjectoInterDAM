@@ -14,11 +14,14 @@
 
     mg.init = function () {
         potableWell = Math.floor(Math.random() * 3);
-        timeLeft = 5;
+
+        // Difficulty scaling: 5s base, -0.5s per level, minimum 2s
+        timeLeft = Math.max(2, 5 - mg.getDificultad() * 0.5);
+
         state = "playing";
         stateTime = 0;
 
-        console.log("Minijuego Pozos: Pozo potable es " + potableWell);
+        console.log("Minijuego Pozos: Pozo potable es " + potableWell + " | Tiempo: " + timeLeft.toFixed(2));
 
         for (var i = 0; i < wells.length; i++) {
             wells[i].hover = 0;
