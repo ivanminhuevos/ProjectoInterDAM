@@ -1,10 +1,10 @@
 var mg = new Microgame("arbol", "Colecciona manzanas!", 5);
 
-var arbolImg = Canvas_NewImage("/img/arbol/arbol.png");
-var arbolFondoImg = Canvas_NewImage("/img/arbol/fondo.png")
-var arbolManzanaImg = Canvas_NewImage("/img/arbol/manzana.png")
-var arbolManoImg = Canvas_NewImage("/img/arbol/mano.png")
-var arbolManoCerradaImg = Canvas_NewImage("/img/arbol/mano_cerrada.png")
+var arbolImg = Canvas_NewImage("./img/arbol/arbol.png");
+var arbolFondoImg = Canvas_NewImage("./img/arbol/fondo.png")
+var arbolManzanaImg = Canvas_NewImage("./img/arbol/manzana.png")
+var arbolManoImg = Canvas_NewImage("./img/arbol/mano.png")
+var arbolManoCerradaImg = Canvas_NewImage("./img/arbol/mano_cerrada.png")
 
 manzanas = []
 
