@@ -9,9 +9,10 @@
     <script src="./js/lib/microgame.js"></script>
     <script src="./js/lib/util.js"></script>
 
-    <script src="./js/microgames/mg_example.js"></script>
-    <script src="./js/microgames/mg_arbol.js"></script>
+    <!-- <script src="./js/microgames/mg_example.js"></script> -->
+    <!-- <script src="./js/microgames/mg_arbol.js"></script> temporálmente desactivado -->
     <script src="./js/microgames/mg_pozos.js"></script>
+    <script src="./js/microgames/mg_clima.js"></script>
 </head>
 
 <body>
@@ -22,44 +23,53 @@
         <section class="canvasdock">
             <canvas width="800" height="600" onmousemove="MOUSE_Update(event)" id="framebuffer_canvas" />
         </section>
-        <hr>
-        <section>
-            <h2>1. Concepto</h2>
-            <p>Título: nombre aquí</p>
-            <p>Género: Arcade / Party Game Educativo (Estilo WarioWare)</p>
-            <p>Objetivo: Conocer sobre los Objetivos de Desarrollo Sostenible (ODS) mediante minijuegos rápidos y
-                directos.</p>
-            <p>Público Objetivo: Estudiantes y personas interesado en videojuegos casuales.</p>
-        </section>
-        <section>
-            <h2>Progreso</h2>
-            <p>Dia 1:</p>
-            <p>Hemos planificado en Kanban y desarrollado la página principal y la estructura del proyecto</p>
+        <div class="content">
+            <section class="info-card">
+                <h2>🌍 1. Concepto</h2>
+                <p><span class="label">Título:</span> Projecto Intermodular DAM</p>
+                <p><span class="label">Género:</span> Arcade / Party Game Educativo (Estilo WarioWare)</p>
+                <p><span class="label">Objetivo:</span> Conocer sobre los Objetivos de Desarrollo Sostenible (ODS)
+                    mediante minijuegos rápidos y
+                    directos.</p>
+                <p><span class="label">Público Objetivo:</span> Estudiantes y personas interesado en videojuegos
+                    casuales.</p>
+            </section>
 
-            <p><strong>Apartados del kanban completados</strong></p>
-            <ol>
-                <li>Página Principal</li>
-                <li>Base para microjuegos</li>
-            </ol>
+            <section class="info-card">
+                <h2>📈 Progreso del Proyecto</h2>
 
-            <p>Día 2:</p>
-            <p>Hemos desarrollado el bucle jugable principal y hemos avancado con los microjuegos</p>
+                <div class="day-block">
+                    <h3>Día 1:</h3>
+                    <p>Hemos planificado en Kanban y desarrollado la página principal y la estructura del proyecto</p>
+                    <p class="tag">Apartados completados:</p>
+                    <ul>
+                        <li>Página Principal</li>
+                        <li>Base para microjuegos</li>
+                    </ul>
+                </div>
 
-            <p><strong>Apartados del Kanban completados</strong></p>
-            <ol>
-                <li>Bucle del juego principal</li>
-                <li>Microjuego: acción por el clima</li>
-            </ol>
-            <p>Día 3:</p>
-            <p>Hemos avancado con los microjuegos otra vez. Esta vez con el juego del hambre y agua limpia</p>
+                <div class="day-block">
+                    <h3>Día 2:</h3>
+                    <p>Hemos desarrollado el bucle jugable principal y hemos avanzado con los microjuegos</p>
+                    <p class="tag">Apartados completados:</p>
+                    <ul>
+                        <li>Bucle del juego principal</li>
+                        <li>Microjuego: acción por el clima</li>
+                    </ul>
+                </div>
 
-            <p><strong>Apartados del Kanban completados</strong></p>
-            <ol>
-                <li>Microjuego: Agua limpia (WIP)</li>
-                <li>Microjuego: Hambre cero (Heavy WIP)</li>
-            </ol>
-            <p>WIP</p>
-        </section>
+                <div class="day-block">
+                    <h3>Día 3:</h3>
+                    <p>Hemos avanzado con los microjuegos otra vez. Esta vez con el juego del hambre y agua limpia</p>
+                    <p class="tag">Apartados completados:</p>
+                    <ul>
+                        <li>Microjuego: Agua limpia (WIP)</li>
+                        <li>Microjuego: Hambre cero (Heavy WIP)</li>
+                    </ul>
+                    <p class="wip-badge">WIP</p>
+                </div>
+            </section>
+        </div>
     </main>
 </body>
 <footer>

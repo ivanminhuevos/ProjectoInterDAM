@@ -8,14 +8,23 @@ var arbolManoCerradaImg = Canvas_NewImage("/img/arbol/mano_cerrada.png")
 
 manzanas = []
 
-mg.init = function() {
+var timeLeft = 5;
+var state = "playing"; // "playing", "won", "lost"
+var stateTime = 0;
+
+mg.init = function () {
     manzanas = []
     var diff = mg.getDificultad();
 
+    // Time scaling
+    timeLeft = Math.max(2, 5 - diff * 0.5);
+    state = "playing";
+    stateTime = 0;
+
     var manzanasTotal = 4;
-    if(diff > 9) {
+    if (diff > 9) {
         manzanasTotal = 5;
-    } else if(diff > 19) {
+    } else if (diff > 19) {
         manzanasTotal = 6;
     }
 
@@ -25,7 +34,7 @@ mg.init = function() {
     var endY = beginY + 196;
 
 
-    for(var i = 0; i < manzanasTotal; i++) {
+    for (var i = 0; i < manzanasTotal; i++) {
         manzana = {
             "x": beginX + (Math.random() * (endX - beginX)),
             "y": beginY + (Math.random() * (endY - beginY)),
@@ -36,43 +45,43 @@ mg.init = function() {
 }
 
 var pressFlag = false;
-mg.think = function(dt) {
-    if(manzanas.length <= 0) {
+mg.think = function (dt) {
+    if (manzanas.length <= 0) {
         mg.win()
     }
 
-    if(Mouse_GetLeftDown()) {
-        if(pressFlag) {
+    if (Mouse_GetLeftDown()) {
+        if (pressFlag) {
             return;
         }
         pressFlag = true;
 
         toRemove = []
-        for(var i = 0; i < manzanas.length; i++) {
+        for (var i = 0; i < manzanas.length; i++) {
             var manzana = manzanas[i];
-            if(!Mouse_InBox(manzana.x - 32, manzana.y - 32, 64, 64)) {
+            if (!Mouse_InBox(manzana.x - 32, manzana.y - 32, 64, 64)) {
                 continue;
             }
 
             toRemove.push(i);
         }
 
-        if(toRemove.length <= 0) {
+        if (toRemove.length <= 0) {
             return;
         }
 
-        for(var i = (toRemove.length - 1); i >= 0; i--) {
+        for (var i = (toRemove.length - 1); i >= 0; i--) {
             manzanas.splice(toRemove[i], 1);
         }
     } else {
-        if(pressFlag) {
+        if (pressFlag) {
             pressFlag = false;
         }
     }
-    
+
 }
 
-mg.draw = function() {
+mg.draw = function () {
     Canvas_Clear(0, 0, 0);
 
     Canvas_DrawImage(arbolFondoImg, 0, 0, Canvas_GetWidth(), Canvas_GetHeight())
@@ -84,9 +93,9 @@ mg.draw = function() {
 
     Canvas_DrawImage(arbolImg, Canvas_GetWidth() / 2 - (arbolW / 2), Canvas_GetHeight() + 32 - arbolH, arbolW, arbolH);
 
-    for(var i = 0; i < manzanas.length; i++) {
+    for (var i = 0; i < manzanas.length; i++) {
         var manzana = manzanas[i];
-        
+
         Canvas_DrawImage(arbolManzanaImg, manzana.x - 32, manzana.y - 32, 64, 64);
     }
 
@@ -95,7 +104,7 @@ mg.draw = function() {
     Canvas_DrawTextAlign("Manzanas restantes: " + manzanas.length, Canvas_GetWidth() / 2, 32, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP);
 
 
-    if(Mouse_GetLeftDown()) {
+    if (Mouse_GetLeftDown()) {
         Canvas_DrawImage(arbolManoCerradaImg, Mouse_GetX() - 32, Mouse_GetY() - 32, 64, 64);
     } else {
         Canvas_DrawImage(arbolManoImg, Mouse_GetX() - 32, Mouse_GetY() - 32, 64, 64);

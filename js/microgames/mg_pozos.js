@@ -65,7 +65,7 @@
                 if (state === "won") {
                     mg.win();
                 } else {
-                    PIDAM_BeginInterlude(); // Manual fail transition
+                    PIDAM_OnMinigameLoss(); // Manual fail transition
                 }
             }
         }
