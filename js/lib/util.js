@@ -13,3 +13,7 @@ function Util_Internal_SetDeltaTime(dtGet) {
 function Util_GetCurTime() {
     return curTime;
 }
+
+function Util_ResetCurTime() {
+    curTime = 0;
+}

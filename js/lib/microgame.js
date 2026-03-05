@@ -1,9 +1,10 @@
 var mgRegistry = {}
 var mgSeqRegistry = []
 class Microgame {
-    constructor(name, desc) {
+    constructor(name, desc, maxTime) {
         this.name = name;
         this.desc = desc;
+        this.maxTime = (maxTime != null) ? maxTime : 10;
         this.dificultad = 0;
 
         mgRegistry[name] = this;
@@ -48,6 +49,10 @@ function Microgames_SetActive(name) {
 
 function Microgames_GetActive() {
     return activeMG;
+}
+
+function Microgames_GetActiveName() {
+    return activeMG.name;
 }
 
 function Microgames_ThinkActive() {

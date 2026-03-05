@@ -1,4 +1,4 @@
-var mg = new Microgame("arbol", "Colleciona manzanas!");
+var mg = new Microgame("arbol", "Colecciona manzanas!", 5);
 
 var arbolImg = Canvas_NewImage("/img/arbol/arbol.png");
 var arbolFondoImg = Canvas_NewImage("/img/arbol/fondo.png")
