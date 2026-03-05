@@ -15,8 +15,9 @@
     var totalTimeSinceStart = 0;
 
     mg.init = function () {
-        timeLeft = Math.max(2, 5 - mg.getDificultad() * 0.5);
-        goal = Math.min(4, 2 + Math.floor(mg.getDificultad() / 5));
+        // Difficulty scaling: 5s base, -0.4s per level, minimum 1.5s
+        timeLeft = Math.max(1.5, 5 - mg.getDificultad() * 0.4);
+        goal = Math.min(4, 2 + Math.floor(mg.getDificultad() / 3));
 
         state = "playing";
         stateTime = 0;

@@ -15,8 +15,8 @@
     mg.init = function () {
         potableWell = Math.floor(Math.random() * 3);
 
-        // Difficulty scaling: 5s base, -0.5s per level, minimum 2s
-        timeLeft = Math.max(2, 5 - mg.getDificultad() * 0.5);
+        // Difficulty scaling: 5s base, -0.4s per level, minimum 1.5s
+        timeLeft = Math.max(1.5, 5 - mg.getDificultad() * 0.4);
 
         state = "playing";
         stateTime = 0;
@@ -81,19 +81,19 @@
 
         // Draw instructions or feedback
         var msg = mg.desc;
-        var msgColor = [255, 255, 255];
+        var msgColor = [0, 210, 255]; // Neon cyan base
 
         if (state === "won") {
-            msg = "¡Bien!";
-            msgColor = [0, 255, 0];
+            msg = "¡Agua limpia!";
+            msgColor = [57, 255, 20]; // Neon green
         } else if (state === "lost") {
-            msg = "Uh oh...";
-            msgColor = [255, 0, 0];
+            msg = "¡Contaminada!";
+            msgColor = [255, 49, 49]; // Neon red
         }
 
-        Canvas_SetFont("48px Outfit, sans-serif");
+        Canvas_SetFont("800 56px Outfit, sans-serif");
         Canvas_SetDrawColor(msgColor[0], msgColor[1], msgColor[2]);
-        Canvas_DrawTextAlign(msg, Canvas_GetWidth() / 2, 100, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER);
+        Canvas_DrawTextAlign(msg, Canvas_GetWidth() / 2, 80, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER);
 
         // Draw Wells
         for (var i = 0; i < wells.length; i++) {

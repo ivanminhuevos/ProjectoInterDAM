@@ -16,8 +16,8 @@ mg.init = function () {
     manzanas = []
     var diff = mg.getDificultad();
 
-    // Time scaling
-    timeLeft = Math.max(2, 5 - diff * 0.5);
+    // Time scaling: 5s base, -0.4s per level, minimum 1.5s
+    timeLeft = Math.max(1.5, 5 - diff * 0.4);
     state = "playing";
     stateTime = 0;
 

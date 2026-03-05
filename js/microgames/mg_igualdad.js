@@ -11,8 +11,9 @@
     var previousMouseState = false;
 
     mg.init = function () {
-        timeLeft = Math.max(3, 5 - mg.getDificultad() * 0.2);
-        clicksNeeded = 5 + Math.floor(mg.getDificultad() / 2);
+        // Difficulty scaling: 5s base, -0.4s per level, minimum 1.5s
+        timeLeft = Math.max(1.5, 5 - mg.getDificultad() * 0.4);
+        clicksNeeded = 5 + Math.floor(mg.getDificultad() * 1.5);
 
         state = "playing";
         stateTime = 0;
