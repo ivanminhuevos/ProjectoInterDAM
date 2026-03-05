@@ -1,5 +1,5 @@
 console.log("holaaa")
-var mg = new Microgame("example", "Ejemplo!");
+var mg = new Microgame("example", "Ejemplo!", 2);
 console.log(mg);
 
 var imgTest = Canvas_NewImage("/img/debug/texture1.png");
@@ -9,7 +9,9 @@ mg.init = function() {
 }
 
 mg.think = function(dt) {
-    
+    if(Util_GetCurTime() > 1) {
+        mg.win();
+    }
 }
 
 mg.draw = function() {

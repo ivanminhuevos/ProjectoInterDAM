@@ -73,6 +73,7 @@ TEXT_ALIGN_CENTER = -0.5
 TEXT_ALIGN_RIGHT = -1
 
 TEXT_ALIGN_TOP = 1
+TEXT_ALIGN_MIDDLE = 0.25
 TEXT_ALIGN_BOTTOM = 0
 
 function Canvas_DrawTextAlign(msg, x, y, alX, alY) {
