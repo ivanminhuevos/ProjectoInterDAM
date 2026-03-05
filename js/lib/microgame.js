@@ -28,6 +28,10 @@ class Microgame {
     win() {
         PIDAM_OnMinigameWin();
     }
+
+    lose() {
+        PIDAM_OnMinigameLose();
+    }
 }
 
 function Microgames_GetByName(name) {
