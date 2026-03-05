@@ -43,7 +43,8 @@ function PIDAM_InterludeDraw() {
     Canvas_SetFont(szDelta + "px sans-serif");
     Canvas_SetDrawColorA(255, 255, 255, alphaDelta);
     Canvas_DrawTextAlign(nextMGObj.desc, Canvas_GetWidth() / 2, Canvas_GetHeight() / 2, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER);
-
+    Canvas_SetFont((szDelta * 0.5) + "px sans-serif");
+    Canvas_DrawTextAlign("Dificultad " + Dificultad_GetDificultad(), Canvas_GetWidth() / 2, Canvas_GetHeight() / 2 + 24, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER);
 
     var szAdd = Math.abs(Math.sin(Util_GetCurTime() * 8) * 8)
 
@@ -91,6 +92,7 @@ function PIDAM_BeginInterlude() {
 
 function PIDAM_OnMinigameWin() {
     console.log("Minijuego ganado!");
+    Dificultad_IncrementarDificultad();
 
     PIDAM_BeginInterlude();
 }
@@ -193,6 +195,7 @@ function PIDAM_LoseThink() {
         return;
     }
 
+    Dificultad_ResetearDificultad();
     Vidas_ResetearVidas();
     PIDAM_BeginInterlude();
 }
