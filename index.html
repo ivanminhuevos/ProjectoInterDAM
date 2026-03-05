@@ -1,60 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Projecto Intermodular DAM</title>
-        <link rel="stylesheet" href="./css/style.css">
-        <script src="./js/lib/mouse.js"></script>
-        <script src="./js/lib/canvas.js"></script>
-        <script src="./js/lib/microgame.js"></script>
-        <script src="./js/lib/util.js"></script>
-        <script src="./js/lib/vidas.js"></script>
-        <script src="./js/lib/dificultad.js"></script>
 
-        <script src="./js/microgames/mg_example.js"></script>
-        <script src="./js/microgames/mg_arbol.js"></script>
-    </head>
-    <body>
-        <header>
-            <h1>Projecto Intermodular DAM</h1>
-        </header>
-        <main>
-            <section class="canvasdock">
-                <canvas width="800" height="600" onmousemove="MOUSE_Update(event)" id="framebuffer_canvas"/>
-            </section>
-            <hr>
-            <section>
-                <h2>1. Concepto</h2>
-                <p>Título: nombre aquí</p>
-                <p>Género: Arcade / Party Game Educativo (Estilo WarioWare)</p>
-                <p>Objetivo: Conocer sobre los Objetivos de Desarrollo Sostenible (ODS) mediante minijuegos rápidos y directos.</p>
-                <p>Público Objetivo: Estudiantes y personas interesado en videojuegos casuales.</p>
-            </section>
-            <section>
-                <h2>Progreso</h2>
-                <p>Dia 1:</p>
-                <p>Hemos planificado en Kanban y desarrollado la página principal y la estructura del proyecto</p>
-                
-                <p><strong>Apartados del kanban completados</strong></p>
-                <ol>
-                    <li>Página Principal</li>
-                    <li>Base para microjuegos</li>
-                </ol>
+<head>
+    <title>Projecto Intermodular DAM</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/lib/mouse.js"></script>
+    <script src="./js/lib/canvas.js"></script>
+    <script src="./js/lib/microgame.js"></script>
+    <script src="./js/lib/util.js"></script>
+    <script src="./js/lib/vidas.js"></script>
+    <script src="./js/lib/dificultad.js"></script>
 
-                <p>Día 2:</p>
-                <p>Hemos desarrollado el bucle jugable principal y hemos avancado con los microjuegos</p>
+    <script src="./js/microgames/mg_example.js"></script>
+    <script src="./js/microgames/mg_arbol.js"></script>
+    <script src="./js/microgames/mg_dinero.js"></script>
+</head>
 
-                <p><strong>Apartados del Kanban completados</strong></p>
-                <ol>
-                    <li>Bucle del juego principal</li>
-                    <li>Microjuego: acción por el clima</li>
-                </ol>
-                <p>WIP</p>
-            </section>
-        </main>
-    </body>
-    <footer>
-        Projecto Intermodular DAM
-    </footer>
+<body>
+    <header>
+        <h1>Projecto Intermodular DAM</h1>
+    </header>
+    <main>
+        <section class="canvasdock">
+            <canvas width="800" height="600" onmousemove="MOUSE_Update(event)" id="framebuffer_canvas" />
+        </section>
+        <hr>
+        <section>
+            <h2>1. Concepto</h2>
+            <p>Título: nombre aquí</p>
+            <p>Género: Arcade / Party Game Educativo (Estilo WarioWare)</p>
+            <p>Objetivo: Conocer sobre los Objetivos de Desarrollo Sostenible (ODS) mediante minijuegos rápidos y
+                directos.</p>
+            <p>Público Objetivo: Estudiantes y personas interesado en videojuegos casuales.</p>
+        </section>
+        <section>
+            <h2>Progreso</h2>
+            <p>Dia 1:</p>
+            <p>Hemos planificado en Kanban y desarrollado la página principal y la estructura del proyecto</p>
 
-    <script src="./js/pidam.js"></script>
+            <p><strong>Apartados del kanban completados</strong></p>
+            <ol>
+                <li>Página Principal</li>
+                <li>Base para microjuegos</li>
+            </ol>
+
+            <p>Día 2:</p>
+            <p>Hemos desarrollado el bucle jugable principal y hemos avancado con los microjuegos</p>
+
+            <p><strong>Apartados del Kanban completados</strong></p>
+            <ol>
+                <li>Bucle del juego principal</li>
+                <li>Microjuego: acción por el clima</li>
+            </ol>
+            <p>WIP</p>
+        </section>
+    </main>
+</body>
+<footer>
+    Projecto Intermodular DAM
+</footer>
+
+<script src="./js/pidam.js"></script>
+
 </html>
