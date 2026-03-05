@@ -107,7 +107,7 @@ function PIDAM_Init() {
 window.onload = function () {
     PIDAM_Init();
 
-    Microgames_SetActive("pozos");
+    Microgames_SetActive("igualdad");
     onMinigame = true;
 
     //PIDAM_BeginInterlude();
