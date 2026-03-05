@@ -1,12 +1,8 @@
 (function () {
     var mg = new Microgame("clima", "¡Apaga las máquinas!");
 
-    var machines = [
-        { id: 0, x: 180, y: 200, w: 200, h: 140, on: true, hover: 0 },
-        { id: 1, x: 420, y: 200, w: 200, h: 140, on: true, hover: 0 },
-        { id: 2, x: 180, y: 380, w: 200, h: 140, on: true, hover: 0 },
-        { id: 3, x: 420, y: 380, w: 200, h: 140, on: true, hover: 0 }
-    ];
+    // Removed fixed machines array; will generate dynamically in init()
+    var machines = [];
 
     var timeLeft = 5;
     var state = "playing"; // "playing", "won", "lost"
@@ -17,18 +13,46 @@
     mg.init = function () {
         // Difficulty scaling: 5s base, -0.4s per level, minimum 1.5s
         timeLeft = Math.max(1.5, 5 - mg.getDificultad() * 0.4);
-        goal = Math.min(4, 2 + Math.floor(mg.getDificultad() / 3));
+
+        var numMachines = Math.min(12, 4 + mg.getDificultad()); // Starts at 4, adds 1 per level, max 12
+        goal = Math.min(numMachines, 2 + mg.getDificultad()); // Ask to turn off 2 initially, +1 per level
+
+        machines = [];
+        var cols = numMachines <= 4 ? 2 : (numMachines <= 6 ? 3 : 4);
+        var rows = Math.ceil(numMachines / cols);
+        var spacingX = 20;
+        var spacingY = 20;
+
+        var mw = Math.min(200, (750 - (cols - 1) * spacingX) / cols);
+        var mh = Math.min(140, (380 - (rows - 1) * spacingY) / rows);
+
+        var totalGridHeight = rows * mh + (rows - 1) * spacingY;
+        var startY = 200 + (350 - totalGridHeight) / 2; // Center vertically in bottom 350px
+
+        for (var r = 0; r < rows; r++) {
+            var colsInRow = Math.min(cols, numMachines - r * cols);
+            var rowWidth = colsInRow * mw + (colsInRow - 1) * spacingX;
+            var startX = (800 - rowWidth) / 2;
+
+            for (var c = 0; c < colsInRow; c++) {
+                var i = r * cols + c;
+                machines.push({
+                    id: i,
+                    x: startX + c * (mw + spacingX),
+                    y: startY + r * (mh + spacingY),
+                    w: mw,
+                    h: mh,
+                    on: true,
+                    hover: 0
+                });
+            }
+        }
 
         state = "playing";
         stateTime = 0;
         totalTimeSinceStart = 0;
 
-        for (var i = 0; i < machines.length; i++) {
-            machines[i].on = true;
-            machines[i].hover = 0;
-        }
-
-        console.log("Minijuego Clima: Objetivo " + goal + " | Tiempo: " + timeLeft.toFixed(2));
+        console.log("Minijuego Clima: Objetivo " + goal + " de " + numMachines + " máquinas | Tiempo: " + timeLeft.toFixed(2));
     }
 
     mg.think = function (dt) {

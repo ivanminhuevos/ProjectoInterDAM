@@ -2,18 +2,31 @@
     var mg = new Microgame("pozos", "¡Busca el agua potable!");
 
     var potableWell = 0;
-    var wells = [
-        { x: 100, y: 300, w: 150, h: 200, hover: 0 },
-        { x: 325, y: 300, w: 150, h: 200, hover: 0 },
-        { x: 550, y: 300, w: 150, h: 200, hover: 0 }
-    ];
+    var wells = [];
 
     var timeLeft = 5;
     var state = "playing"; // "playing", "won", "lost"
     var stateTime = 0;
 
     mg.init = function () {
-        potableWell = Math.floor(Math.random() * 3);
+        var numWells = mg.getDificultad() >= 1 ? 4 : 3;
+        potableWell = Math.floor(Math.random() * numWells);
+
+        wells = [];
+        var totalWidth = numWells * 150 + (numWells - 1) * 50;
+        var startX = (800 - totalWidth) / 2; // Assuming active Canvas width is 800
+
+        for (var i = 0; i < numWells; i++) {
+            wells.push({
+                x: startX + i * 200,
+                y: 300,
+                w: 150,
+                h: 200,
+                hover: 0,
+                baseY: 300,
+                moveOffset: Math.random() * Math.PI * 2 // Random phase for movement
+            });
+        }
 
         // Difficulty scaling: 5s base, -0.4s per level, minimum 1.5s
         timeLeft = Math.max(1.5, 5 - mg.getDificultad() * 0.4);
@@ -22,10 +35,6 @@
         stateTime = 0;
 
         console.log("Minijuego Pozos: Pozo potable es " + potableWell + " | Tiempo: " + timeLeft.toFixed(2));
-
-        for (var i = 0; i < wells.length; i++) {
-            wells[i].hover = 0;
-        }
     }
 
     mg.think = function (dt) {
@@ -39,8 +48,17 @@
                 stateTime = 0;
             }
 
+            var shouldMove = mg.getDificultad() >= 2;
+            var moveSpeed = shouldMove ? (mg.getDificultad() - 1) * 2 : 0; // Speed increases with difficulty
+
             for (var i = 0; i < wells.length; i++) {
                 var w = wells[i];
+
+                if (shouldMove) {
+                    w.moveOffset += dt * moveSpeed;
+                    w.y = w.baseY + Math.sin(w.moveOffset) * 50; // Move up and down by 50px
+                }
+
                 var isOver = Mouse_InBox(w.x, w.y, w.w, w.h);
 
                 if (isOver) {
