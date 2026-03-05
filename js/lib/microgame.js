@@ -44,6 +44,7 @@ function Microgames_SetActive(name) {
     }
     
     activeMG = mg;
+    mg.setDificultad(Dificultad_GetDificultad());
     mg.init();
 }
 
